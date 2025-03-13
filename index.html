@@ -3,16 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <script>
-        window.location.href = "home.html";  // 自动跳转到 home.html
-    </script>
+    <title>主页 - 答题游戏</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>如果没有自动跳转，请 <a href="home.html">点击这里</a></p>
-</body>
-</html>
-
 
     <div id="home-container">
         <img src="images/background.jpg" id="home-bg">
@@ -28,22 +22,21 @@
 
     <script>
         function startGame(level) {
-            window.location.href = `index.html?level=${level}`;
+            window.location.href = `game.html?level=${level}`; // 修改跳转目标
         }
-    
+
         window.onload = function () {
             let unlocked = new URLSearchParams(window.location.search).get("unlocked") || 1;
             unlocked = parseInt(unlocked);
-    
+
             for (let i = 1; i <= unlocked; i++) {
                 let btn = document.getElementById(`btn-${i}`);
                 btn.classList.remove("locked");
-                btn.classList.add("unlocked"); // 让按钮变蓝色
+				 btn.classList.add("unlocked"); // 让按钮变蓝色
                 btn.disabled = false;
             }
         }
     </script>
-
 
 </body>
 </html>
