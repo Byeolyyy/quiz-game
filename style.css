@@ -1,0 +1,85 @@
+/* 背景完整覆盖 */
+#home-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* 按钮间隔加大 */
+#level-buttons {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* 选项按钮 */
+.option {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.option.correct {
+    background-color: green;
+    color: white;
+}
+
+.option.wrong {
+    background-color: red;
+    color: white;
+}
+#cake {
+    width: 150px; /* 变小 */
+    display: block;
+    margin: 20px auto; /* 居中 */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+#cake:hover {
+    transform: scale(1.1);
+}
+
+#birthday-message {
+    font-size: 36px; /* 文字变大 */
+    font-weight: bold;
+    color: red;
+    margin-top: 20px;
+    display: none; /* 初始隐藏，点击后显示 */
+}
+
+/* 关卡按钮 - 默认灰色（未解锁） */
+.level-btn {
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    background: gray; /* 默认未解锁灰色 */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: not-allowed; /* 禁止点击 */
+    transition: 0.3s;
+}
+
+/* 关卡按钮 - 已解锁变蓝色 */
+.level-btn.unlocked {
+    background: #007BFF; /* 解锁后变蓝 */
+    cursor: pointer; /* 可点击 */
+}
+
+

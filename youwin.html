@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Win!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="win-screen">
+        <h1>You Win！🎉</h1>
+        <img src="images/trophy.png" alt="Trophy">
+        <p>🎂 点击蛋糕 🎂</p>
+        <img src="images/cake.png" alt="Cake" id="cake" onclick="showBirthdayMessage()">
+        <p id="birthday-message" class="hidden">🎉 生日快乐，尧姐！ 🎉</p>
+    </div>
+
+    <script>
+        function showBirthdayMessage() {
+            let message = document.getElementById("birthday-message");
+            message.style.display = "block"; // 确保点击后显示
+        }
+    </script>
+
+</body>
+</html>
