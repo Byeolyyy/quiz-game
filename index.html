@@ -3,20 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>答题游戏</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Loading...</title>
+    <script>
+        window.location.href = "home.html";  // 自动跳转到 home.html
+    </script>
 </head>
 <body>
+    <p>如果没有自动跳转，请 <a href="home.html">点击这里</a></p>
+</body>
+</html>
 
-    <div id="game-container">
-        <h1 id="game-title">答题游戏</h1>
-        <div id="question-container">
-            <h2 id="question">第 1 关</h2>
-            <p id="question-text">题目加载中...</p>
-            <div id="options-container"></div>
+
+    <div id="home-container">
+        <img src="images/background.jpg" id="home-bg">
+
+        <h1>答题游戏</h1>
+        <div id="level-buttons">
+            <button class="level-btn locked" id="btn-4" onclick="startGame(4)" disabled>第四关</button>
+            <button class="level-btn locked" id="btn-3" onclick="startGame(3)" disabled>第三关</button>
+            <button class="level-btn locked" id="btn-2" onclick="startGame(2)" disabled>第二关</button>
+            <button class="level-btn locked" id="btn-1" onclick="startGame(1)">第一关</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function startGame(level) {
+            window.location.href = `index.html?level=${level}`;
+        }
+    
+        window.onload = function () {
+            let unlocked = new URLSearchParams(window.location.search).get("unlocked") || 1;
+            unlocked = parseInt(unlocked);
+    
+            for (let i = 1; i <= unlocked; i++) {
+                let btn = document.getElementById(`btn-${i}`);
+                btn.classList.remove("locked");
+                btn.classList.add("unlocked"); // 让按钮变蓝色
+                btn.disabled = false;
+            }
+        }
+    </script>
+
+
 </body>
 </html>
