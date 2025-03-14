@@ -55,31 +55,145 @@
     transform: scale(1.1);
 }
 
+/* 🎉 让 "生日快乐，尧姐！" 文字渐变浮现 */
 #birthday-message {
-    font-size: 36px; /* 文字变大 */
+    font-size: 30px; /* 🔥 让字更大 */
     font-weight: bold;
-    color: red;
-    margin-top: 20px;
-    display: none; /* 初始隐藏，点击后显示 */
+    color: gold;
+    margin-top: 30px;
+    text-align: center;
+    display: none; /* **初始隐藏** */
+    opacity: 0; /* **透明度为 0，防止闪烁** */
+    transition: opacity 1.5s ease-in-out;
 }
 
-/* 关卡按钮 - 默认灰色（未解锁） */
+/* 让文字淡入 */
+.fade-in {
+    opacity: 1;
+}
+
+/* 🏆 奖杯漂浮动画 */
+.floating {
+    animation: floating 3s infinite ease-in-out;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 🎂 蛋糕点击后跳动 */
+#cake {
+    width: 180px; /* 🔥 让蛋糕更明显 */
+    display: block;
+    margin: 30px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#cake:hover {
+    transform: scale(1.1);
+}
+
+.bounce {
+    animation: bounce 0.4s ease-in-out;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* ✨ 梦幻粒子特效 */
+#magic-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* 粒子动画 */
+.magic-particle {
+    position: absolute;
+    width: 30px; /* 🔥 增大粒子大小 */
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 215, 0, 1) 50%, rgba(255, 165, 0, 0) 100%);
+    border-radius: 50%;
+    opacity: 0.9;
+    animation: particle-animation 2.5s forwards ease-out;
+}
+
+@keyframes particle-animation {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--vx), var(--vy));
+        opacity: 0;
+    }
+}
+
+/* 🎉 You Win! 文字渐变彩虹色 */
+.win-title {
+    font-size: 60px; /* 🔥 让字更大 */
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #00e1ff, #0000ff, #a000ff); /* 彩虹色 */
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; /* 让颜色只填充文字 */
+    animation: glowEffect 1.5s infinite alternate;
+}
+
+/* ✨ 让 "You Win!" 文字有发光效果 */
+@keyframes glowEffect {
+    0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 0, 0, 0.3); }
+    100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 0, 0, 0.5); }
+}
+
+/* 🎂 "点击蛋糕" 文字炫酷颜色 */
+.click-text {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(45deg, #ff1493, #ff69b4, #ff4500); /* 渐变粉色 */
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; /* 让颜色只填充文字 */
+    animation: pulse 1.5s infinite alternate;
+}
+
+/* 🌟 让 "点击蛋糕" 文字有轻微的放大动画 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* 🎯 让 `index` 页面的关卡按钮恢复原来的蓝色 */
 .level-btn {
     width: 200px;
     height: 60px;
     font-size: 20px;
-    background: gray; /* 默认未解锁灰色 */
+    background: #007BFF; /* 🔥 纯蓝色 */
     color: white;
     border: none;
     border-radius: 10px;
-    cursor: not-allowed; /* 禁止点击 */
-    transition: 0.3s;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
 
-/* 关卡按钮 - 已解锁变蓝色 */
+/* ⛔️ 关卡未解锁时的灰色 */
+.level-btn.locked {
+    background: gray;
+    cursor: not-allowed;
+}
+
+/* ✅ 关卡解锁时颜色恢复 */
 .level-btn.unlocked {
-    background: #007BFF; /* 解锁后变蓝 */
-    cursor: pointer; /* 可点击 */
+    background: #007BFF; /* 🔥 关卡解锁恢复蓝色 */
+    cursor: pointer;
 }
-
-

@@ -9,17 +9,72 @@
 <body>
 
     <div id="win-screen">
-        <h1>You Win！🎉</h1>
-        <img src="images/trophy.png" alt="Trophy">
-        <p>🎂 点击蛋糕 🎂</p>
-        <img src="images/cake.png" alt="Cake" id="cake" onclick="showBirthdayMessage()">
+        <h1 class="win-title">🎉 You Win！ 🎉</h1>
+        <img src="images/trophy.png" alt="Trophy" class="floating">
+        <p class="click-text">🎂 点击蛋糕 🎂</p>
+        <img src="images/cake.png" alt="Cake" id="cake" onclick="triggerMagic()">
         <p id="birthday-message" class="hidden">🎉 生日快乐，尧姐！ 🎉</p>
     </div>
 
+    <!-- 添加梦幻特效的容器 -->
+    <div id="magic-container"></div>
+
     <script>
-        function showBirthdayMessage() {
+        function triggerMagic() {
             let message = document.getElementById("birthday-message");
-            message.style.display = "block"; // 确保点击后显示
+            let cake = document.getElementById("cake");
+
+            // 让蛋糕跳动一下
+            cake.classList.add("bounce");
+
+            // **立即** 让文字显示
+            message.classList.remove("hidden");
+            message.style.display = "block";
+            message.style.opacity = "1";
+
+            // 添加渐变动画
+            message.classList.add("fade-in");
+
+            createMagicParticles(cake);
+        }
+
+        function createMagicParticles(element) {
+            let magicContainer = document.getElementById("magic-container");
+            magicContainer.innerHTML = ""; // 清空之前的粒子
+
+            let maxParticles = 1500;  // **🔥 这里控制粒子数量**
+            let maxSpeed = 1000;  // **🔥 这里控制粒子飞行距离**
+            let minSpeed = 100;  // **🔥 这里控制最小粒子扩散范围**
+			
+            for (let i = 0; i < maxParticles; i++) { // 🔥 增加粒子数量
+                let particle = document.createElement("div");
+                particle.classList.add("magic-particle");
+
+                // 计算蛋糕的中心位置
+                let rect = element.getBoundingClientRect();
+                let x = rect.left + rect.width / 2;
+                let y = rect.top + rect.height / 2;
+
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+
+                // **增大粒子扩散范围**
+                let angle = Math.random() * 360;
+                let speed = Math.random() * 30 + 100; // 🔥 增加速度 & 扩散范围
+                let velocityX = Math.cos(angle) * speed;
+                let velocityY = Math.sin(angle) * speed;
+
+                // 添加动画
+                particle.style.setProperty("--vx", velocityX + "px");
+                particle.style.setProperty("--vy", velocityY + "px");
+
+                magicContainer.appendChild(particle);
+
+                // 3 秒后移除粒子
+                setTimeout(() => {
+                    particle.remove();
+                }, 4000);
+            }
         }
     </script>
 

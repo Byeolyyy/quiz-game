@@ -1,8 +1,8 @@
 const questions = [
-    { text: "结合分析，小美是Bigbang中谁的粉丝? 小美：今年是喜欢bigbang的第5年，我是他的梦女，我非常喜欢他在舞台上的舞姿和穿搭。", options: ["A", "B", "C", "D"], answer: 0 },
-    { text: "郑雅娴最像什么动物？", options: ["老鼠", "猫", "熊", "鸭子", "松鼠"], answer: 1 },
-    { text: "我的英文名叫什么？", options: ["Zavier", "Helen", "Olivia", "Eva", "Jay"], answer: 3 },
-    { text: "要不要永远跟我做好朋友？", options: ["要", "不要"], answer: 0 }
+    { text: "结合分析，小美是Bigbang中谁的粉丝? 小美：今年是喜欢bigbang的第5年，我是他的梦女，我非常喜欢他在舞台上的舞姿和穿搭。", options: ["A. GD", "B. T.O.P", "C. 大声", "D. 太阳","E. 胜利"], answer: 0 },
+    { text: "郑雅娴最像什么动物？", options: ["A. 老鼠", "B. 猫", "C. 熊", "D. 鸭子", "E. 松鼠"], answer: 1 },
+    { text: "我的英文名叫什么？", options: ["A. Zavier", "B. Helen", "C. Olivia", "D. Eva", "E. Jay"], answer: 3 },
+    { text: "要不要永远跟我做好朋友？", options: ["A. 要", "B. 不要"], answer: 0 }
 ];
 
 let level = new URLSearchParams(window.location.search).get("level") || 1;
